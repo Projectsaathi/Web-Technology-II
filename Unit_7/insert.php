@@ -48,7 +48,8 @@
     $gender = $_POST['gender'];
     mysqli_stmt_execute($stmt);
 
-    echo "New Student created successfully";
+    // echo "New Student created successfully";
+   
 
     mysqli_stmt_close($stmt);
     mysqli_close($conn);
