@@ -7,7 +7,7 @@
 <body>
     <form action="#" method="POST">
         <div>
-            First Name:<input type="text" name="firstname">
+            First Name:<input type="text" name="firstname" required>
         </div>
         <div>
             Last Name:<input type="text" name="lastname">
@@ -23,19 +23,8 @@
         </div>
         <input type="submit" name="insert" value="Insert">
     </form>
-    <?php
-    $servername = "localhost";
-    $username = "root";
-    $password = "password";
-    $dbname = "SPC";
-
-    // Create connection
-    $conn = mysqli_connect($servername, $username, $password, $dbname);
-
-    // Check connection
-    if (!$conn) {
-        die("Connection failed: " . mysqli_connect_error());
-    }
+    <?php require_once "connection.php";
+ 
 
     // Prepare and bind
     $stmt = mysqli_prepare($conn, "INSERT INTO Students (firstname, lastname, email, gender) VALUES (?, ?, ?, ?)");
