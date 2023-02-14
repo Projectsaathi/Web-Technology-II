@@ -1,26 +1,37 @@
 <?php
 
-$servername = "localhost";
-$username = "root";
-$password = "password";
-$dbname = "SPC";
+require_once "connection.php";
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-$sql = "SELECT id, firstname, lastname, gender FROM Students";
+$sql = "SELECT *FROM Students";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     // output data of each row
-    while ($row = $result->fetch_assoc()) {
-        echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. " "."Gender: ". $row['gender']."<br>";
-    }
+    ?>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Gender</th>
+            <th>Email</th>
+        </tr>
+            <?php
+                while ($row = $result->fetch_assoc()) {
+                    ?>
+                        <tr>
+                            <td><?php echo $row["id"] ?></td>
+                            <td><?php echo $row["firstname"]; ?></td>
+                            <td><?php echo $row["lastname"]; ?></td>
+                            <td><?php echo $row["gender"]; ?></td>
+                            <td><?php echo $row["email"]; ?></td>
+                        </tr>
+                    <?php
+                }
+                ?>
+    </table>
+    <?php
+
 } else {
     echo "0 results";
 }

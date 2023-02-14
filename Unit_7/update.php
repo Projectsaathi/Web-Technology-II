@@ -14,7 +14,7 @@ if (isset($_POST['update'])) {
     }
 
     // Update the record
-    $sql = "UPDATE Students SET firstname = 'Ravi' WHERE id = 6 ";
+    $sql = "UPDATE Students SET firstname = 'Siyaram', lastname = 'Rana', gender = 'Male' WHERE id = 7 ";
 
     if (mysqli_query($conn, $sql)) {
         echo "Record updated successfully";

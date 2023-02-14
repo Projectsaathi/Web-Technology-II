@@ -10,6 +10,7 @@
       <input type="submit" name="submit" 
         value="Search">
     </form>
+    
   <strong>Search Results...</strong> <br>
   <?php
         $server_name = "localhost";
@@ -22,6 +23,7 @@
   } else {
       $search_value=$_POST["search"];
   }
+
   $sql="select * from Students where firstname like '%$search_value%' OR 
          lastname LIKE '%$search_value%'";
   $res=$con->query($sql);
